@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const tasks = require('./routes/tasks');
+const tasks = require('./routes/tasks'); //controllers->routes->app.js
 
 //middleware
 app.use(express.json());
