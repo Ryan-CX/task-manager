@@ -4,15 +4,16 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const tasks = require('./routes/tasks'); //model->controllers->routes->app.js
+const notFound = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 //middleware
 app.use(express.json());
+app.use(express.static('./public'));
+app.use(notFound); //for wrong urls 404 error
+app.use(errorHandlerMiddleware);
 
 //routes
-app.get('/hello', (req, res) => {
-	res.send('task manager app');
-});
-
 app.use('/api/v1/tasks', tasks);
 
 const start = async () => {
