@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const tasks = require('./routes/tasks'); //controllers->routes->app.js
+const tasks = require('./routes/tasks'); //model->controllers->routes->app.js
 
 //middleware
 app.use(express.json());
