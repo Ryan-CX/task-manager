@@ -50,8 +50,10 @@ const updateTask = async (req, res) => {
 				.json({ error: `Task not found with id: ${taskID}` });
 		}
 
-		res.status(200).json({ id: taskID, data: req.body });
-	} catch (error) {}
+		res.status(200).json({ task });
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+	}
 };
 
 const deleteTask = async (req, res) => {
